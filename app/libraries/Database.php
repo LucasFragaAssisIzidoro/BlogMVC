@@ -62,6 +62,6 @@ class Database{
         return $this->stmt->rowCount();
     }
     public function ultimoIdInserido(){
-        return $this->stmt->lastInsertId();
+        return $this->dbh->lastInsertId();
     }
 }

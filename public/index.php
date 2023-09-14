@@ -5,6 +5,19 @@
     include './../app/libraries/Database.php';
     $db = new Database;
 
+
+    $usuarioId = 10;
+    $titulo = 'Titulo do post';
+    $texto = 'Texto do post';
+
+    $db->query("INSERT INTO posts (id_usuario, titulo, texto) values (:usuario_id ,:titulo,:texto)");
+    $db->bind(":usuario_id", $usuarioId);
+    $db->bind(":titulo", $titulo);
+    $db->bind(":texto", $texto);
+    $db->executa();
+
+    echo "<hr>Total de Resultados ".$db->totalResultados();
+    echo "<hr>Ultimo id inserido ".$db->ultimoIdInserido();
 ?>
 
 
