@@ -12,7 +12,7 @@
                         <a href="<?php echo URL?>/paginas/home" class="nav-link" data-tooltip ="tooltip" tittle = "Pagina Inicial">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo URL?>/paginas/sobre" class="nav-link" data-tooltip ="tooltip" tittle = "Sobre nós">Sobre nós </a>
+                        <a href="<?php echo URL?>/paginas/sobre" class="nav-link" data-tooltip ="tooltip" tittle = "Sobre nós">Sobre Nós </a>
                     </li>
                 </ul>
                 <span class="navbar-text">
