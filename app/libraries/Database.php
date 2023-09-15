@@ -45,7 +45,7 @@ class Database{
                 $tipo = PDO::PARAM_STR;
            } 
         }
-        $this->stmt->bindValue($parametro, $valor,$tipo);
+        $this->stmt->bindValue($parametro,$valor,$tipo);
     }
     public function executa(){
         return $this->stmt->execute();
