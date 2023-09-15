@@ -16,8 +16,8 @@
                     </li>
                 </ul>
                 <span class="navbar-text">
-                    <a href="#" class="btn btn-info" data-tooltip="tooltip" tittle = "Cadastre-se"> Cadastre-se</a>
-                    <a href="#" class="btn btn-info" data-tooltip="tooltip" tittle = "Cadastre-se"> Login</a>
+                    <a href="<?php echo URL?>/usuarios/cadastrar" class="btn btn-info" data-tooltip="tooltip" tittle = "Cadastre-se"> Cadastre-se</a>
+                    <a href="#" class="btn btn-info" data-tooltip="tooltip" tittle = "Login"> Login</a>
 
                 </span>
 

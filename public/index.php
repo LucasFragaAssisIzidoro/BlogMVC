@@ -1,10 +1,8 @@
 <?php
     include './../app/configuracao.php';
-    include './../app/libraries/Rota.php';
-    include './../app/libraries/Controller.php';
-    include './../app/libraries/Database.php';
+    include './../app/autoload.php';
+    
     $db = new Database;
-
 
     /**
      * insercao de valores
