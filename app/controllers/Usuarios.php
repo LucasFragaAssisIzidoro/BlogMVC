@@ -44,7 +44,8 @@ class Usuarios extends Controller{
                     $dados['senha'] = password_hash($formulario['senha'], PASSWORD_DEFAULT);
 
                     if($this->usuarioModel->armazenar($dados)){
-                        echo "Cadastro realizado com sucesso";
+                        echo Sessao::mensagem('usuario', 'Cadrasto realizado com sucesso!');
+                        header('Location: '.URL.'');
                     }else{
                         die("Erro ao armazenar usuario no banco de dados");
                     }
@@ -87,27 +88,40 @@ class Usuarios extends Controller{
                     $dados['email_erro'] = 'O email digitado é inválido';
                    
                 }else {
-                    $checarLogin = $this->usuarioModel->checarLogin($formulario['email'], $formulario['senha']);
-                    if($checarLogin){
-                        echo "Usuario logado";
+                    $usuario = $this->usuarioModel->checarLogin($formulario['email'], $formulario['senha']);
+                    if($usuario){
+                        $this->criarSessaoUsuario($usuario);
+                        header('Location: '.URL.'');
                     }else{
-                        echo "Usuario ou senha inválidos";
+                        Sessao::mensagem('usuario', 'Usuario ou senha Invalidos','alert alert-danger');
                     }
                 }
             }
             
         } else {
-            $dados = [
-                
+            $dados = [  
                 'email' => '',
                 'senha' => '',
                 'email_erro' => '',
-                'senha_erro' => '',
-               
+                'senha_erro' => '', 
             ];
         }
         
         $this->view('usuarios/login', $dados);
+    }
+    private function criarSessaoUsuario($usuario){
+        $_SESSION['usuario_id']= $usuario->id_usuario;
+        $_SESSION['usuario_nome'] = $usuario->nome_usuario;
+        $_SESSION['usuario_email']= $usuario->email_usuario;
+    }
+    public function sair(){
+        unset( $_SESSION['usuario_id']);
+        unset( $_SESSION['usuario_nome']);
+        unset( $_SESSION['usuario_email']);
+
+        session_destroy();
+
+        header('Location: '.URL.'');
     }
 
 }

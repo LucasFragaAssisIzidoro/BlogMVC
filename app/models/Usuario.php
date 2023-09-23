@@ -28,7 +28,7 @@
             }
         }
         public function checarLogin($email, $senha){
-            $this->db->query("SELECT email_usuario, senha_usuario from usuario WHERE email_usuario = :email_usuario");
+            $this->db->query("SELECT * from usuario WHERE email_usuario = :email_usuario");
             $this->db->bind(":email_usuario", $email);
 
             if($this->db->resultado()){

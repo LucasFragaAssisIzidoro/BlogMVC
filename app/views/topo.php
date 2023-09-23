@@ -15,12 +15,17 @@
                         <a href="<?php echo URL?>/paginas/sobre" class="nav-link" data-tooltip ="tooltip" tittle = "Sobre nós">Sobre Nós </a>
                     </li>
                 </ul>
-                <span class="navbar-text">
-                    <a href="<?php echo URL?>/usuarios/cadastrar" class="btn btn-info" data-tooltip="tooltip" tittle = "Cadastre-se"> Cadastre-se</a>
-                    <a href="<?php echo URL?>/usuarios/login"class="btn btn-info" data-tooltip="tooltip" tittle = "Login"> Login</a>
-
-                </span>
-
+                <?php if(isset($_SESSION['usuario_id'])):?>
+                    <span class="navbar-text">
+                        <p><?php echo "Olá ".$_SESSION['usuario_nome']."!"; ?> </p>
+                        <a class="btn btn-sm btn-danger" href="<?php echo URL?>/usuarios/sair">Sair</a>
+                    </span>
+                <?php else : ?> 
+                    <span class="navbar-text">
+                        <a href="<?php echo URL?>/usuarios/cadastrar" class="btn btn-info" data-tooltip="tooltip" tittle = "Cadastre-se"> Cadastre-se</a>
+                        <a href="<?php echo URL?>/usuarios/login"class="btn btn-info" data-tooltip="tooltip" tittle = "Login"> Login</a>
+                    </span>
+                <?php endif; ?> 
             </div>
         </nav>
     </div>

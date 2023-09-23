@@ -4,6 +4,7 @@
             Login
         </card>
         <div class="card-body">
+            <?php echo Sessao::mensagem('usuario')?>
             <form name="login" method="POST" action="<?php echo URL?>/usuarios/login">
                 
                 <div class="form-group">
@@ -22,8 +23,6 @@
                     </div>
                     
                 </div>
-
-                
                 <div class="row">
                     <div class="col-md-6">
                         <input type="submit" value="Login" class="btn btn-info btn-block">
