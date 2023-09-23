@@ -1,3 +1,4 @@
+<?php echo Sessao::mensagem('usuario');?>
 <div class="col-xl-4 col-md-6 mx-auto p-5">
     <div class="card">
         <card class="card-header bg-secondary text-white">

@@ -45,7 +45,7 @@ class Usuarios extends Controller{
 
                     if($this->usuarioModel->armazenar($dados)){
                         echo Sessao::mensagem('usuario', 'Cadrasto realizado com sucesso!');
-                        header('Location: '.URL.'');
+                        Url::redirecionar('usuarios/login');
                     }else{
                         die("Erro ao armazenar usuario no banco de dados");
                     }
@@ -113,6 +113,8 @@ class Usuarios extends Controller{
         $_SESSION['usuario_id']= $usuario->id_usuario;
         $_SESSION['usuario_nome'] = $usuario->nome_usuario;
         $_SESSION['usuario_email']= $usuario->email_usuario;
+
+        Url::redirecionar('paginas/home');
     }
     public function sair(){
         unset( $_SESSION['usuario_id']);
@@ -121,7 +123,7 @@ class Usuarios extends Controller{
 
         session_destroy();
 
-        header('Location: '.URL.'');
+        Url::redirecionar('usuarios/login');
     }
 
 }
