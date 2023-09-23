@@ -67,5 +67,47 @@ class Usuarios extends Controller{
         
         $this->view('usuarios/cadastrar', $dados);
     }
+    public function login(){
+        
+        $formulario = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+        if (isset($formulario)) {
+            $dados = [
+                'email' => trim($formulario['email']),
+                'senha' => trim($formulario['senha']),
+            ];
+            if (in_array("", $formulario)) {
+                if (empty($formulario['email'])) {
+                    $dados['email_erro'] = "Preencha o campo email";
+                }
+                if (empty($formulario['senha'])) {
+                    $dados['senha_erro'] = "Preencha o campo senha";
+                } 
+            } else {
+                if (Valida::validarEmail($formulario['email'])) {
+                    $dados['email_erro'] = 'O email digitado é inválido';
+                   
+                }else {
+                    $checarLogin = $this->usuarioModel->checarLogin($formulario['email'], $formulario['senha']);
+                    if($checarLogin){
+                        echo "Usuario logado";
+                    }else{
+                        echo "Usuario ou senha inválidos";
+                    }
+                }
+            }
+            
+        } else {
+            $dados = [
+                
+                'email' => '',
+                'senha' => '',
+                'email_erro' => '',
+                'senha_erro' => '',
+               
+            ];
+        }
+        
+        $this->view('usuarios/login', $dados);
+    }
 
 }

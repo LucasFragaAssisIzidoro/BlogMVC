@@ -27,5 +27,20 @@
                 return false;
             }
         }
+        public function checarLogin($email, $senha){
+            $this->db->query("SELECT email_usuario, senha_usuario from usuario WHERE email_usuario = :email_usuario");
+            $this->db->bind(":email_usuario", $email);
 
+            if($this->db->resultado()){
+                $resultado = $this->db->resultado();
+                if(password_verify($senha, $resultado->senha_usuario)){
+                    return $resultado;
+                }else{
+                return false;
+                }   
+            }else{
+                return false;
+            }
+
+        }
     }
