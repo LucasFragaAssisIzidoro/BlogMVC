@@ -75,6 +75,7 @@ class Usuarios extends Controller{
             $dados = [
                 'email' => trim($formulario['email']),
                 'senha' => trim($formulario['senha']),
+                
             ];
             if (in_array("", $formulario)) {
                 if (empty($formulario['email'])) {
@@ -91,7 +92,6 @@ class Usuarios extends Controller{
                     $usuario = $this->usuarioModel->checarLogin($formulario['email'], $formulario['senha']);
                     if($usuario){
                         $this->criarSessaoUsuario($usuario);
-                        header('Location: '.URL.'');
                     }else{
                         Sessao::mensagem('usuario', 'Usuario ou senha Invalidos','alert alert-danger');
                     }
@@ -113,8 +113,8 @@ class Usuarios extends Controller{
         $_SESSION['usuario_id']= $usuario->id_usuario;
         $_SESSION['usuario_nome'] = $usuario->nome_usuario;
         $_SESSION['usuario_email']= $usuario->email_usuario;
-
-        Url::redirecionar('paginas/home');
+        
+        Url::redirecionar('posts');
     }
     public function sair(){
         unset( $_SESSION['usuario_id']);
