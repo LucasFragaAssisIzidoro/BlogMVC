@@ -2,15 +2,15 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="<?php echo URL?>/posts">Posts</a></li>
-            <li class="breadcrumb-item active" aria-current="page"><a >Cadastrar</a></li>
+            <li class="breadcrumb-item active" aria-current="page"><a >Editar</a></li>
         </ol>
     </nav>
     <div class="card">
         <card class="card-header bg-secondary text-white">
-            Cadastrar Posts
+            Editar Posts
         </card>
         <div class="card-body">
-            <form name="login" method="POST" action="<?php echo URL?>/posts/cadastrar" class="mt-4">
+            <form name="login" method="POST" class="mt-4" action="<?= URL?>/posts/editar/<?= $dados['id_post']?>">
                 
                 <div class="form-group">
                     <label for="titulo">Titulo  <sup class="text-danger">*</sup></label>
@@ -22,7 +22,7 @@
 
                 <div class="form-group">
                     <label for="texto">Texto: <sup class="text-danger">*</sup></label>
-                    <textarea class="form-control <?php if(isset($dados['texto_erro'])) { echo $dados['texto_erro'] ? 'is-invalid' : ''; } ?>" name="texto" id="texto">
+                    <textarea class="form-control <?php if(isset($dados['texto_erro'])) { echo $dados['texto_erro'] ? 'is-invalid' : ''; } ?>" name="texto" id="texto"><?php echo $dados['texto']?>
                     </textarea>
                     <?php if(isset($dados['texto_erro']) && $dados['texto_erro']) { ?>
                         <div class="invalid-feedback">
@@ -30,7 +30,7 @@
                         </div>
                     <?php } ?>
                 </div>
-                <input type="submit" value="Cadastrar" class="btn btn-info btn-block">
+                <input type="submit" value="Editar" class="btn btn-info btn-block">
             </form>
         </div>
     </div>

@@ -42,4 +42,9 @@
                 return false;
             }
         }
+        public function lerUsuarioPorId($id){
+            $this->db->query("SELECT * FROM usuario WHERE id_usuario = :id_usuario");
+            $this->db->bind('id_usuario', $id);
+            return $this->db->resultado();
+        }
     }

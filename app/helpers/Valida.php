@@ -15,5 +15,8 @@ Class Valida{
             return false;
         }
     }
+    public static function validarData($data){
+        return date('d/m/Y H:i:s', strtotime($data));
+    }
 
 }
